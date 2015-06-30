@@ -19,15 +19,16 @@ GET http://fritz.box/login_sid.lua HTTP/1.1
 ASCII = a
 Decimal = 97
 Hexadecimal = 61
-UTF-16 = 6100
-//utf-16 is just adding two zeros '00' to hexadecimal
+UTF-16 = 0061
+//utf-16 is just adding two zeros '00' before hexadecimal
 //utf-16 encoding
 
+//creating challenge response to get a sid (-> login)
 challengestr = (extracted from login_sid.lua)
 fbpwd = 'secret'
-challenge_pwd = challengestr + "-" + fbpwd //creating "response code"
+challenge_pwd = challengestr + "-" + fbpwd //none
 challenge_pwd =~ s/(.)/$1 . chr(0)/eg //ignore that for now
-md5 = lc(md5_hex(challenge_pwd)) //ignore that for now
+md5 = hashlib.md5(challenge_pwd).hexdigest()
 challenge_response = challengestr + "-" + md5
 
 
