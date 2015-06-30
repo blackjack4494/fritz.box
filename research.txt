@@ -13,14 +13,22 @@ GET http://fritz.box/login_sid.lua HTTP/1.1
 //challenge=8digits
 //only challenge key is important.
 
+//challenge string [a-f&&0-9]
+
 //example
 ASCII = a
-Dezimal = 97
-Hexadezimal = 61
+Decimal = 97
+Hexadecimal = 61
 UTF-16 = 6100
-//utf-16 is just adding two zeros '00' to hex
+//utf-16 is just adding two zeros '00' to hexadecimal
+//utf-16 encoding
 
-utf-16 encoding
+challengestr = (extracted from login_sid.lua)
+fbpwd = 'secret'
+challenge_pwd = challengestr + "-" + fbpwd //creating "response code"
+challenge_pwd =~ s/(.)/$1 . chr(0)/eg //ignore that for now
+md5 = lc(md5_hex(challenge_pwd)) //ignore that for now
+challenge_response = challengestr + "-" + md5
 
 
 md5.js 
@@ -28,3 +36,9 @@ md5.js
 
 
 Login Part:
+
+
+Useful Ressources (mostly german):
+http://avm.de/fileadmin/user_upload/Global/Service/Schnittstellen/AVM_Technical_Note_-_Session_ID.pdf
+http://avm.de/fileadmin/user_upload/Global/Service/Schnittstellen/AHA-HTTP-Interface.pdf
+http://avm.de/fileadmin/user_upload/Global/Service/Schnittstellen/IPv6_Technical_Note_de.pdf
