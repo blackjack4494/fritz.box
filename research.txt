@@ -51,9 +51,21 @@ response={challengestr}-{md5}&page=&username=
 OR
 response={challenge_respone}&page=&username=
 
+-----------------------------
+//alternative
+$http_response = $user_agent->get( "http://fritz.box/login_sid.lua?user=&response=$challenge_response");
+//todo:check that way out
+-----------------------------
+
+//if challenge_response is valid
+//getting the sid from fritz.box
+Location: http://192.168.178.1/home/home.lua?sid={16digits}
+//success - logged in.
+
 
 
 Useful Ressources (mostly german):
 http://avm.de/fileadmin/user_upload/Global/Service/Schnittstellen/AVM_Technical_Note_-_Session_ID.pdf
 http://avm.de/fileadmin/user_upload/Global/Service/Schnittstellen/AHA-HTTP-Interface.pdf
 http://avm.de/fileadmin/user_upload/Global/Service/Schnittstellen/IPv6_Technical_Note_de.pdf
+http://blog.soldierer.com/2013/08/27/218/
