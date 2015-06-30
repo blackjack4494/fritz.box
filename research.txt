@@ -1,0 +1,10 @@
+Local Network:
+fritz.box == 192.168.178.1
+
+GET http://192.168.178.1/logincheck.lua HTTP/1.1
+GET http://192.168.178.1/login.lua HTTP/1.1 
+//blank login.lua
+
+md5.js
+
+Login Part:
