@@ -1,14 +1,27 @@
 Local Network:
 fritz.box == 192.168.178.1
 
+
 GET http://192.168.178.1/logincheck.lua HTTP/1.1
 GET http://192.168.178.1/login.lua HTTP/1.1 
 //blank login.lua
+
 
 GET http://fritz.box/login_sid.lua HTTP/1.1
 <SessionInfo><SID>0000000000000000</SID><Challenge>xxxxxxxx</Challenge><BlockTime>0</BlockTime><Rights></Rights></SessionInfo>
 //sid=16digits
 //challenge=8digits
+//only challenge key is important.
+
+//example
+ASCII = a
+Dezimal = 97
+Hexadezimal = 61
+UTF-16 = 6100
+//utf-16 is just adding two zeros '00' to hex
+
+utf-16 encoding
+
 
 md5.js 
 //(https://github.com/blackjack4494/fritz.box/blob/master/md5.js)
