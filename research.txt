@@ -38,12 +38,19 @@ challenge_pwd =~ s/(.)/$1 . chr(0)/eg //ignore that for now
 md5 = hashlib.md5(challenge_pwd).hexdigest()
 challenge_response = challengestr + "-" + md5
 
-
 md5.js 
 //(https://github.com/blackjack4494/fritz.box/blob/master/md5.js)
 
 
-Login Part:
+//login with challenge_respone
+//use requests package?!
+//POST 
+http://192.168.178.1/login.lua
+//with request body content
+response={challengestr}-{md5}&page=&username=
+OR
+response={challenge_respone}&page=&username=
+
 
 
 Useful Ressources (mostly german):
