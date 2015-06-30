@@ -22,6 +22,13 @@ Hexadecimal = 61
 UTF-16 = 0061
 //utf-16 is just adding two zeros '00' before hexadecimal
 //utf-16 encoding
+string = "a"
+decimal = ord(string) //output is 97
+----------------------
+//convert decimal to hex without 0x
+hexadecimal = sprintf(“%02lx”, $decimal) //ignore for now
+----------------------
+utf16 = "00" + hexadecimal
 
 //creating challenge response to get a sid (-> login)
 challengestr = (extracted from login_sid.lua)
