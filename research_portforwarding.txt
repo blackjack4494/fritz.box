@@ -1,1 +1,58 @@
 
+//for now just use manually extracted sid
+//sid usage:
+http://192.168.178.1/home/home.lua?sid={16digits} //home
+
+
+//we can actually skip(**) the following part as long as we know how many rules we already have (active and inactive)
+
+//portforwarding link
+GET http://192.168.178.1/internet/port_fw.lua?sid={16digits} HTTP/1.1
+
+POST http://192.168.178.1/internet/port_fw.lua HTTP/1.1
+//request body
+new_rule=&box_upnp_control_activated=1&sid={16digits} 
+//new_rule with empty value signals that you want to create a new portforwarding rule -> send you to next page
+//box_upnp_control_activated=1 just informs user that it is activated (1) or deactivated (0)
+
+//creating new rule
+GET http://192.168.178.1/internet/port_fw_edit.lua?rule=rule0&new=1&sid={16digits} HTTP/1.1
+//important! rule counter starts at 0!!
+//new=1 just implicates that we create a new rule -> new=0 could be changing existent rule?? have to figure out
+
+
+//(**)
+//
+POST http://192.168.178.1/internet/port_fw_edit.lua HTTP/1.1
+//request body
+current_rule=rule0&is_new_rule=true&was_exposed_host=false&forwardrules_rule0_activated=1&selected_app=other&forwardrules_rule0_description={name}&forwardrules_rule0_protocol=UDP&forwardrules_rule0_port={port}&forwardrules_rule0_endport={port}&selected_lan_device={ipadr}%23&forwardrules_rule0_fwport={port}&sid={16digits}&rule=rule0&apply=
+//let's have a look
+
+current_rule=rule0
+//this is our current rule - notice that the counter starts at 0!!
+
+is_new_rule=true
+//this tells fritz.box if the rule is new or not - false maybe implicit editing of that rule
+
+was_exposed_host=false
+//if exposed host is used (true) or not (false)
+
+forwardrules_rule0_activated=1
+//our rule (roule0 in this case) is activated (1) - possible to create rules without making them active means =0
+
+selected_app=other
+//dropdown box there are other "apps" like 'html' 'remote' etc.
+//better always use "=other" as standard in this program
+
+forwardrules_rule0_description={name}
+//the description name in fritz.box
+
+forwardrules_rule0_protocol=UDP
+//the protocol in this case 'UDP' but there are also others available - have to get their names tho
+
+
+
+
+
+
+
