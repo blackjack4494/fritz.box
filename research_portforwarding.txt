@@ -1,3 +1,4 @@
+#Port Forwarding (only IPv4!)
 
 //for now just use manually extracted sid
 //sid usage:
@@ -50,7 +51,8 @@ forwardrules_rule0_description={name}
 forwardrules_rule0_protocol=UDP
 //the protocol in this case 'UDP' but there are also others available - have to get their names tho
 
-
+forwardrules_rule0_port={port}
+//this is the start port for
 
 
 
