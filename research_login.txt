@@ -55,10 +55,10 @@ x = '00' + s
 
 //creating challenge response to get a sid (-> login)
 challengestr = (extracted from login_sid.lua)
-fbpwd = 'secret'
-challenge_pwd = challengestr + "-" + fbpwd //none
-challenge_pwd =~ s/(.)/$1 . chr(0)/eg //ignore that for now
-md5 = hashlib.md5(challenge_pwd).hexdigest()
+fbpw = 'secret'
+challenge_pw = challengestr + "-" + fbpw //none
+challenge_pw =~ s/(.)/$1 . chr(0)/eg //ignore that for now
+md5 = hashlib.md5(challenge_pw).hexdigest()
 challenge_response = challengestr + "-" + md5
 
 md5.js 
