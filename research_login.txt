@@ -32,11 +32,25 @@ hexadecimal = sprintf(“%02lx”, $decimal) //ignore for now
 ----------------------
 utf16 = "00" + hexadecimal
 
+//although you can use unicode('string', 'utf_16'[/utf_16_be/utf_16_le])
 //use python's built-in function
 binascii.b2a_hex(data)
 //example
 //input: binascii.b2a_hex("8e70c54e")
 //output: '3865373063353465'
+
+//still no utf16 so we need 00 before every 2 digits
+//credit goes here: http://stackoverflow.com/a/3258612/1515686
+//so we use
+t = binascii.b2a_hex(data)
+s = '00'.join(t[i:i+2] for i in range(0, len(t), 2))
+//important t has to appear like this t = '11223344' not t = 11223344
+//output: '380065003700300063003500340065'
+//still missing '00' at the really beginning
+//just use this easy solution
+x = '00' + s
+//output: '00380065003700300063003500340065'
+
 
 
 //creating challenge response to get a sid (-> login)
