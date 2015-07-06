@@ -61,9 +61,6 @@ challenge_pw =~ s/(.)/$1 . chr(0)/eg //ignore that for now
 md5 = hashlib.md5(challenge_pw).hexdigest()
 challenge_response = challengestr + "-" + md5
 
-md5.js 
-//(https://github.com/blackjack4494/fritz.box/blob/master/md5.js)
-
 
 //login with challenge_respone
 //use requests package?!
