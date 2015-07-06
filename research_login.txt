@@ -20,7 +20,9 @@ ASCII = a
 Decimal = 97
 Hexadecimal = 61
 UTF-16 = 0061
+
 //utf-16 is just adding two zeros '00' before hexadecimal
+
 //utf-16 encoding
 string = "a"
 decimal = ord(string) //output is 97
@@ -29,6 +31,13 @@ decimal = ord(string) //output is 97
 hexadecimal = sprintf(“%02lx”, $decimal) //ignore for now
 ----------------------
 utf16 = "00" + hexadecimal
+
+//use python's built-in function
+binascii.b2a_hex(data)
+//example
+//input: binascii.b2a_hex("8e70c54e")
+//output: '3865373063353465'
+
 
 //creating challenge response to get a sid (-> login)
 challengestr = (extracted from login_sid.lua)
