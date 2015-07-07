@@ -19,9 +19,10 @@ GET http://fritz.box/login_sid.lua HTTP/1.1
 ASCII = a
 Decimal = 97
 Hexadecimal = 61
-UTF-16 = 0061
+UTF-16LE = 6100
 
-//utf-16 is just adding two zeros '00' before hexadecimal
+//utf-16LE is just adding two zeros '00' after hexadecimal
+//LE stands for Little Endian
 
 //utf-16 encoding
 string = "a"
@@ -30,7 +31,7 @@ decimal = ord(string) //output is 97
 //convert decimal to hex without 0x
 hexadecimal = sprintf(“%02lx”, $decimal) //ignore for now
 ----------------------
-utf16 = "00" + hexadecimal
+utf16 = hexadecimal + "00" 
 
 //although you can use unicode('string', 'utf_16'[/utf_16_be/utf_16_le])
 //use python's built-in function
@@ -48,8 +49,8 @@ s = '00'.join(t[i:i+2] for i in range(0, len(t), 2))
 //output: '380065003700300063003500340065'
 //still missing '00' at the really beginning
 //just use this easy solution
-x = '00' + s
-//output: '00380065003700300063003500340065'
+x = s + '00'
+//output: '38006500370030006300350034006500'
 
 
 
